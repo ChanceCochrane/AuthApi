@@ -16,9 +16,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("http://localhost:4200")  // Allow the Angular app on port 4200
               .AllowAnyMethod()                     // Allow all HTTP methods (GET, POST, etc.)
-              .AllowAnyHeader()                    // Allow any headers
-              .AllowCredentials();                  // Allow credentials (if you're sending cookies or authorization headers)
-
+              .AllowAnyHeader();                   // Allow any headers
     });
 });
 
@@ -50,7 +48,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-//app.UseCors("AllowAngularApp");  // Use the policy defined above
+app.UseCors("AllowAngularApp");  // Use the policy defined above
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseAuthentication();
